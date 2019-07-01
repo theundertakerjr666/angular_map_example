@@ -1,0 +1,35 @@
+<div class="row row-rides">
+  <h2 class="heading">My Rides</h2>
+  <hr />
+  <div class="summary">
+    You've logged
+    <p class="totals">{{ totalDistance }}</p>
+    total miles over
+    <p class="totals">{{ totalRides }}</p>
+    runs since
+    <p class="totals">{{ firstDate | date: 'longDate'}}</p>
+  </div>
+  <hr />
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Comments</th>
+        <th>Date</th>
+        <th>Distance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ride of rides">
+        <td>
+          <a [routerLink] ="['/run', ride.id]">
+            {{ ride.name }}
+          </a>
+        </td>
+        <td>{{ ride.comments }}</td>
+        <td>{{ ride.date | date:"dd-MM-yyyy"}}</td>
+        <td>{{ ride.distance }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
